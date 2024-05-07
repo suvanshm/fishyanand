@@ -32,9 +32,10 @@ H8 G8 ... A8 H7 G7 ... A7 ... H1 G1 ... C1 B1 A1
 */
 
 #define NAME "fishyanand 1.0"
-#define BRD_SQ_NUM 120 // see explanation below
 
-#define MAXGAMEMOVES 1024
+#define BRD_SQ_NUM 120 // see explanation below
+#define MAXGAMEMOVES 1024 // arbitrarily chosen, should be enough 
+#define START_FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" // starting position
 
 
 enum {EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK};
@@ -132,6 +133,11 @@ extern U64 ClearMask[64];
 extern U64 PieceKeys[13][120]; // 13 pieces (6w + 6b + empty), 120 squares ?? WHY NOT USE 64 HERE
 extern U64 SideKey;
 extern U64 CastleKeys[16]; // castling represented as 4 bits, so 16 possibilities
+extern char PceChar[];
+extern char SideChar[];
+extern char RankChar[];
+extern char FileChar[];
+
 
 // FUNCTIONS 
 
@@ -150,5 +156,7 @@ extern U64 GeneratePosKey(const S_BOARD *pos);
 
 // board.c 
 extern void ResetBoard(S_BOARD *pos);
+extern int ParseFEN(char *fen, S_BOARD *pos);
+extern void PrintBoard(const S_BOARD *pos);
 
 #endif

@@ -16,7 +16,7 @@ U64 CastleKeys[16]; // castling represented as 4 bits, so 16 possibilities
 and last 4 digits are anded with hex code 0xf = 1111*/
 U64 Rand64() {
     U64 r = 0ULL;
-    r = (U64)rand() + (U64)rand() << 15 + (U64)rand() << 30 + (U64)rand() << 45 + ((U64)rand() & 0xf)<< 60;
+    r = (U64)rand() | (U64)rand() << 15 | (U64)rand() << 30 | (U64)rand() << 45 | ((U64)rand() & 0xf)<< 60;
     return r;
 }
 
